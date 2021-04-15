@@ -37,7 +37,16 @@ public class accessDatabase implements ArtistDao {
     }
 
     @Override
-    public int updateArtistById(UUID id) {
-        return 0;
+    public int updateArtistById(UUID id,Artist artist) {
+        return selectArtistById(id)
+                .map(a -> {
+                    int indexToDelete = DB.indexOf(artist);
+                    if (indexToDelete>=0){
+                        DB.set(indexToDelete, artist);
+                        return 1;
+                    }
+                    return 0;
+                })
+                  .orElse(0);
     }
 }

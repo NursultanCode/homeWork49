@@ -13,5 +13,5 @@ public interface ArtistDao {
     List<Artist> selectAllArtist();
     Optional<Artist> selectArtistById(UUID id);
     int deleteArtistById(UUID id);
-    int updateArtistById(UUID id);
+    int updateArtistById(UUID id, Artist artist);
 }
