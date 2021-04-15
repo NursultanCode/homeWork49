@@ -23,12 +23,17 @@ public class accessDatabase implements ArtistDao {
 
     @Override
     public Optional<Artist> selectArtistById(UUID id) {
-        return Optional.empty();
+        return DB.stream()
+                .filter(artist -> artist.getId().equals(id))
+                .findFirst();
     }
 
     @Override
     public int deleteArtistById(UUID id) {
-        return 0;
+        Optional<Artist> artistOptional = selectArtistById(id);
+        if (artistOptional.isEmpty())return 0;
+        DB.remove(artistOptional.get());
+        return 1;
     }
 
     @Override

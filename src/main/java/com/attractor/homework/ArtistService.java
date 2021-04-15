@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ArtistService {
@@ -20,6 +22,10 @@ public class ArtistService {
 
     public List<Artist> getAllPeople(){
         return artistDao.selectAllArtist();
+    }
+
+    public Optional<Artist> getArtistById(UUID id){
+        return artistDao.selectArtistById(id);
     }
 
 }
