@@ -1,6 +1,7 @@
 package com.attractor.homework;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ArtistDao {
@@ -10,4 +11,7 @@ public interface ArtistDao {
         return insertArtist(id, artist);
     }
     List<Artist> selectAllArtist();
+    Optional<Artist> selectArtistById(UUID id);
+    int deleteArtistById(UUID id);
+    int updateArtistById(UUID id);
 }
